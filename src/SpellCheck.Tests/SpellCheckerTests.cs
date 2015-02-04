@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
 
-namespace Text.SpellCheck.Tests
+namespace PlatformSpellCheck.Tests
 {
     [TestClass]
     public class SpellCheckerTests

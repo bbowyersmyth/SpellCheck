@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 
-namespace Text.SpellCheck
+namespace PlatformSpellCheck
 {
     public class SpellChecker
     {
