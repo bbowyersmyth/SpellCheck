@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Text.SpellCheck</id>
+    <version>0.0.1</version>
+    <title>Managed wrapper for the Microsoft Spell Checking API</title>
+    <authors>bbowyersmyth</authors>
+    <owners>bbowyersmyth</owners>
+    <licenseUrl>http://www.opensource.org/licenses/apache2.0</licenseUrl>
+    <projectUrl>http://github.com/bbowyersmyth/spellcheck</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Managed wrapper for the Microsoft Spell Checking API</description>
+    <summary>Managed wrapper for the Microsoft Spell Checking API</summary>
+    <releaseNotes>
+      Initial release
+    </releaseNotes>
+    <tags>spell checker check spell-check spell-checker spellchecker spellcheck suggestion</tags>
+  </metadata>
+  <files>
+    <file src="..\src\SpellCheck\bin\Release\Text.SpellCheck.dll" target="lib\net40" />
+    <file src="..\src\SpellCheck\bin\Release\Text.SpellCheck.dll" target="lib\net45" />
+  </files>
+</package>
