@@ -23,7 +23,7 @@ namespace PlatformSpellCheck.Tests
         [TestMethod]
         public void SupportedLanguagesTest()
         {
-            Assert.IsTrue(SpellChecker.SupportedLanguages.Count() > 0);
+            Assert.IsTrue(SpellChecker.SupportedLanguages.Any());
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace PlatformSpellCheck.Tests
 
             var examples = spell.Suggestions("manle");
 
-            Assert.IsTrue(examples.Count() > 0);
+            Assert.IsTrue(examples.Any());
         }
 
         [TestMethod]
@@ -67,6 +67,7 @@ namespace PlatformSpellCheck.Tests
             var spell2 = new SpellChecker("fr-fr");
 
             var examples1 = spell1.Suggestions("doog").ToList();
+            spell1.Dispose();
             var examples2 = spell2.Suggestions("doog").ToList();
 
             Assert.AreEqual(examples1.Count(), 4);
@@ -77,6 +78,22 @@ namespace PlatformSpellCheck.Tests
         public void UnsupportedLangTest()
         {
             var spell = new SpellChecker("zz-zz");
+        }
+
+        [TestMethod]
+        public void IgnoreTest()
+        {
+            var spell = new SpellChecker();
+
+            var examples = spell.Check("codez");
+
+            Assert.IsTrue(examples.Any());
+
+            spell.Ignore("codez");
+
+            examples = spell.Check("codez");
+
+            Assert.AreEqual(examples.Count(), 0);
         }
     }
 }
