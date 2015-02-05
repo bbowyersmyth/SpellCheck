@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>PlatformSpellCheck</id>
-    <version>0.0.2-alpha</version>
+    <version>0.0.3-alpha</version>
     <title>Spell Check</title>
     <authors>bbowyersmyth</authors>
     <owners>bbowyersmyth</owners>
@@ -12,7 +12,7 @@
     <description>Managed wrapper for the Microsoft Spell Checking API</description>
     <summary>Managed wrapper for the Microsoft Spell Checking API</summary>
     <releaseNotes>
-      Rename assembly
+      Disposable, Added Ignore() method
     </releaseNotes>
     <tags>spell checker check spell-check spell-checker spellchecker spellcheck suggestion</tags>
   </metadata>
