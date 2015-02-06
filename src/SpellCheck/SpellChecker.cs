@@ -5,6 +5,9 @@ using System.Runtime.InteropServices;
 
 namespace PlatformSpellCheck
 {
+    /// <summary>
+    /// The Spell Checking API permits developers to consume spell checker capability to check text, and get suggestions
+    /// </summary>
     public class SpellChecker : IDisposable
     {
         private MsSpellCheckLib.ISpellChecker _spellChecker;
@@ -29,14 +32,16 @@ namespace PlatformSpellCheck
         /// <summary>
         /// Creates a spell checker that supports the specified language
         /// </summary>
-        /// <param name="lang">A BCP47 language tag that identifies the language for the requested spell checker</param>
-        public SpellChecker(string lang)
+        /// <remarks><see cref="SpellChecker.IsLanguageSupported(System.String)"/> can be called to determine if languageTag is supported</remarks>
+        /// <exception cref="System.ArgumentException">languageTag is an empty string, or there is no spell checker available for languageTag</exception>
+        /// <param name="languageTag">A BCP47 language tag that identifies the language for the requested spell checker</param>
+        public SpellChecker(string languageTag)
         {
             var factory = new MsSpellCheckLib.SpellCheckerFactory();
 
             try
             {
-                _spellChecker = factory.CreateSpellChecker(lang);
+                _spellChecker = factory.CreateSpellChecker(languageTag);
             }
             finally
             {
@@ -44,23 +49,27 @@ namespace PlatformSpellCheck
             }
         }
 
+        /// <summary>
+        /// Determines if the current operating system is supports the Windows Spell Checking API
+        /// </summary>
+        /// <returns>true if OS is supported, false otherwise</returns>
         public static bool IsPlatformSupported()
         {
             return Environment.OSVersion.Version > new Version(6, 2);
         }
 
         /// <summary>
-        /// Determines if the specified language is supported by this spell checker
+        /// Determines if the specified language is supported by a registered spell checker
         /// </summary>
-        /// <param name="lang">A BCP47 language tag that identifies the language for the requested spell checker</param>
+        /// <param name="languageTag">A BCP47 language tag that identifies the language for the requested spell checker</param>
         /// <returns>true if supported, false otherwise</returns>
-        public static bool IsLanguageSupported(string lang)
+        public static bool IsLanguageSupported(string languageTag)
         {
             var factory = new MsSpellCheckLib.SpellCheckerFactory();
 
             try
             {
-                return (factory.IsSupported(lang) != 0);
+                return (factory.IsSupported(languageTag) != 0);
             }
             finally
             {
@@ -104,6 +113,37 @@ namespace PlatformSpellCheck
         }
 
         /// <summary>
+        /// Gets the BCP47 language tag this instance of the spell checker supports
+        /// </summary>
+        public string LanguageTag
+        {
+            get
+            {
+                return _spellChecker.languageTag;
+            }
+        }
+
+        /// <summary>
+        /// Treats the provided word as though it were part of the original dictionary.
+        /// The word will no longer be considered misspelled, and will also be considered as a candidate for suggestions.
+        /// </summary>
+        /// <param name="word"></param>
+        public void Add(string word)
+        {
+            _spellChecker.Add(word);
+        }
+
+        /// <summary>
+        /// Causes occurrences of one word to be replaced by another
+        /// </summary>
+        /// <param name="from">The incorrectly spelled word to be autocorrected</param>
+        /// <param name="to">The correctly spelled word that should replace from</param>
+        public void AutoCorrect(string from, string to)
+        {
+            _spellChecker.AutoCorrect(from, to);
+        }
+
+        /// <summary>
         /// Retrieves spelling suggestions for the supplied text
         /// </summary>
         /// <param name="word">The word or phrase to get suggestions for</param>
@@ -134,7 +174,7 @@ namespace PlatformSpellCheck
         /// <summary>
         /// Checks the spelling of the supplied text and returns a collection of spelling errors
         /// </summary>
-        /// <param name="word">The text to check</param>
+        /// <param name="text">The text to check</param>
         /// <returns>The results of spell checking</returns>
         public IEnumerable<SpellingError> Check(string text)
         {
@@ -191,12 +231,18 @@ namespace PlatformSpellCheck
             _spellChecker.Ignore(word);
         }
 
+        /// <summary>
+        /// Disposes resources used by SpellChecker
+        /// </summary>
         public void Dispose()
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Disposes resources used by SpellChecker
+        /// </summary>
         ~SpellChecker()
         {
             this.Dispose(false);

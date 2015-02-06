@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\PlatformSpellCheck.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\PlatformSpellCheck.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MsSpellCheckLib">
@@ -48,6 +50,7 @@
     <Compile Include="RecommendedAction.cs" />
     <Compile Include="SpellChecker.cs" />
     <Compile Include="SpellingError.cs" />
+    <Compile Include="UserDictionariesRegistrar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

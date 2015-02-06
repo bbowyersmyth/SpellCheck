@@ -18,6 +18,8 @@
   </metadata>
   <files>
     <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.dll" target="lib\net40" />
+    <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.xml" target="lib\net40" />
     <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.dll" target="lib\net45" />
+    <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.xml" target="lib\net45" />
   </files>
 </package>

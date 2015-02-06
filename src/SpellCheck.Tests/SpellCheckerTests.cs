@@ -95,5 +95,13 @@ namespace PlatformSpellCheck.Tests
 
             Assert.AreEqual(examples.Count(), 0);
         }
+
+        [TestMethod]
+        public void LanguageIdTest()
+        {
+            var spell = new SpellChecker("en-AU");
+
+            Assert.AreEqual(spell.LanguageTag, "en-AU");
+        }
     }
 }
