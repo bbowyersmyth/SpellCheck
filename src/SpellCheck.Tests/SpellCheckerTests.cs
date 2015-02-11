@@ -103,5 +103,14 @@ namespace PlatformSpellCheck.Tests
 
             Assert.AreEqual(spell.LanguageTag, "en-AU");
         }
+
+        [TestMethod]
+        public void DoubleDisposeTest()
+        {
+            var spell = new SpellChecker("en-AU");
+
+            spell.Dispose();
+            spell.Dispose(); // No error
+        }
     }
 }
