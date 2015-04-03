@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>PlatformSpellCheck</id>
-    <version>0.1.0-beta</version>
+    <version>1.0.0</version>
     <title>Spell Check</title>
     <authors>bbowyersmyth</authors>
     <owners>bbowyersmyth</owners>
