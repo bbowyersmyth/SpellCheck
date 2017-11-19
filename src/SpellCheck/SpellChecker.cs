@@ -55,7 +55,12 @@ namespace PlatformSpellCheck
         /// <returns>true if OS is supported, false otherwise</returns>
         public static bool IsPlatformSupported()
         {
+#if NETSTANDARD2_0
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
+                Environment.OSVersion.Version > new Version(6, 2);
+#else
             return Environment.OSVersion.Version > new Version(6, 2);
+#endif
         }
 
         /// <summary>

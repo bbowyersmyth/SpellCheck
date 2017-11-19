@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>PlatformSpellCheck</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Spell Check</title>
     <authors>bbowyersmyth</authors>
     <owners>bbowyersmyth</owners>
@@ -21,5 +21,7 @@
     <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.xml" target="lib\net40" />
     <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.dll" target="lib\net45" />
     <file src="..\src\SpellCheck\bin\Release\PlatformSpellCheck.xml" target="lib\net45" />
+    <file src="..\src\SpellCheckCore\bin\Release\netstandard2.0\PlatformSpellCheck.dll" target="lib\netstandard2.0" />
+    <file src="..\src\SpellCheckCore\bin\Release\netstandard2.0\PlatformSpellCheck.xml" target="lib\netstandard2.0" />
   </files>
 </package>

@@ -57,3 +57,6 @@ build/
 [Oo]bj/
 
 builds/local
+
+# Visual Studio
+.vs/

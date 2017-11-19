@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>SpellCheck</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>bbowyersmyth</Authors>
+    <Company />
+    <Product>SpellCheck</Product>
+    <Description>Managed wrapper for the Microsoft Spell Checking API</Description>
+    <Copyright>Copyright © Bruce Bowyer-Smyth</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/bbowyersmyth/SpellCheck/master/License.md</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/bbowyersmyth/spellcheck</PackageProjectUrl>
+    <PackageTags>spell checker check spell-check spell-checker spellchecker spellcheck suggestion</PackageTags>
+    <AssemblyName>PlatformSpellCheck</AssemblyName>
+    <RootNamespace>PlatformSpellCheck</RootNamespace>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\PlatformSpellCheck.xml</DocumentationFile>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.0\PlatformSpellCheck.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SpellCheck\RecommendedAction.cs" Link="RecommendedAction.cs" />
+    <Compile Include="..\SpellCheck\SpellChecker.cs" Link="SpellChecker.cs" />
+    <Compile Include="..\SpellCheck\SpellingError.cs" Link="SpellingError.cs" />
+    <Compile Include="..\SpellCheck\UserDictionariesRegistrar.cs" Link="UserDictionariesRegistrar.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MsSpellCheckLib">
+      <HintPath>..\..\lib\MsSpellCheckLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
