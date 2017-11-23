@@ -97,6 +97,23 @@ namespace PlatformSpellCheck.Tests
         }
 
         [TestMethod]
+        public void RemoveTest()
+        {
+            var spell = new SpellChecker();
+
+            spell.Ignore("codez");
+
+            var examples = spell.Check("codez");
+
+            Assert.AreEqual(examples.Count(), 0);
+
+            spell.Remove("codez");
+            examples = spell.Check("codez");
+
+            Assert.IsTrue(examples.Any());
+        }
+
+        [TestMethod]
         public void LanguageIdTest()
         {
             var spell = new SpellChecker("en-AU");

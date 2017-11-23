@@ -33,17 +33,9 @@
     <DocumentationFile>bin\Release\PlatformSpellCheck.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MsSpellCheckLib">
-      <HintPath>..\..\lib\MsSpellCheckLib.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,6 +43,13 @@
     <Compile Include="SpellChecker.cs" />
     <Compile Include="SpellingError.cs" />
     <Compile Include="UserDictionariesRegistrar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MsSpellCheckLib\MsSpellCheckLib.csproj">
+      <Project>{e316a827-99bb-4cd1-b800-d5d491bf54a6}</Project>
+      <Name>MsSpellCheckLib</Name>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

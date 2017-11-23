@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>SpellCheck</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>bbowyersmyth</Authors>
     <Company />
     <Product>SpellCheck</Product>
@@ -34,11 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="MsSpellCheckLib">
-      <HintPath>..\..\lib\MsSpellCheckLib.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <Private>false</Private>
-    </Reference>
+    <ProjectReference Include="..\MsSpellCheckLib\MsSpellCheckLib.csproj">
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

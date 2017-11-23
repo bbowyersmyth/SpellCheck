@@ -172,7 +172,8 @@ namespace PlatformSpellCheck
             }
             finally
             {
-                Marshal.ReleaseComObject(suggestions);
+                if (suggestions != null)
+                    Marshal.ReleaseComObject(suggestions);
             }
         }
 
@@ -223,7 +224,8 @@ namespace PlatformSpellCheck
                 if (currentError != null)
                     Marshal.ReleaseComObject(currentError);
 
-                Marshal.ReleaseComObject(errors);
+                if (errors != null)
+                    Marshal.ReleaseComObject(errors);
             }
         }
 
@@ -234,6 +236,22 @@ namespace PlatformSpellCheck
         public void Ignore(string word)
         {
             _spellChecker.Ignore(word);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="word"></param>
+        public void Remove(string word)
+        {
+            if (_spellChecker is MsSpellCheckLib.ISpellChecker2 spellChecker2)
+            {
+                spellChecker2.Remove(word);
+            }
+            else
+            {
+                throw new NotSupportedException("Spell checker instance does not implement ISpellChecker2");
+            }
         }
 
         /// <summary>
