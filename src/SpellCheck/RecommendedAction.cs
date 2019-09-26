@@ -1,4 +1,7 @@
-﻿
+﻿// <copyright file="RecommendedAction.cs" company="Bruce Bowyer-Smyth">
+//     Copyright © Bruce Bowyer-Smyth
+// </copyright>
+
 namespace PlatformSpellCheck
 {
     /// <summary>
