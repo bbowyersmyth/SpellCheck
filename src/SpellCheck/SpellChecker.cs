@@ -55,7 +55,12 @@ namespace PlatformSpellCheck
         /// <returns>true if OS is supported, false otherwise</returns>
         public static bool IsPlatformSupported()
         {
+#if NETSTANDARD2_1
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
+                Environment.OSVersion.Version > new Version(6, 2);
+#else
             return Environment.OSVersion.Version > new Version(6, 2);
+#endif
         }
 
         /// <summary>
@@ -167,7 +172,8 @@ namespace PlatformSpellCheck
             }
             finally
             {
-                Marshal.ReleaseComObject(suggestions);
+                if (suggestions != null)
+                    Marshal.ReleaseComObject(suggestions);
             }
         }
 
@@ -218,7 +224,8 @@ namespace PlatformSpellCheck
                 if (currentError != null)
                     Marshal.ReleaseComObject(currentError);
 
-                Marshal.ReleaseComObject(errors);
+                if (errors != null)
+                    Marshal.ReleaseComObject(errors);
             }
         }
 
