@@ -1,0 +1,10 @@
+﻿namespace MsSpellCheckLib
+{
+    internal enum CORRECTIVE_ACTION
+    {
+        CORRECTIVE_ACTION_NONE,
+        CORRECTIVE_ACTION_GET_SUGGESTIONS,
+        CORRECTIVE_ACTION_REPLACE,
+        CORRECTIVE_ACTION_DELETE,
+    }
+}
