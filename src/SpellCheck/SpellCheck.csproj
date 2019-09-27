@@ -3,7 +3,7 @@
     <RootNamespace>PlatformSpellCheck</RootNamespace>
     <AssemblyName>PlatformSpellCheck</AssemblyName>
     <TargetFrameworks>net4;netstandard2.1</TargetFrameworks>
-    <PackageId>SpellCheck</PackageId>
+    <PackageId>PlatformSpellCheck</PackageId>
     <Version>1.1.0</Version>
     <Authors>bbowyersmyth</Authors>
     <Owners>bbowyersmyth</Owners>
