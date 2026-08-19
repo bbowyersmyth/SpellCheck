@@ -55,7 +55,7 @@ namespace PlatformSpellCheck
         /// <returns>true if OS is supported, false otherwise</returns>
         public static bool IsPlatformSupported()
         {
-#if NETSTANDARD2_1
+#if NET8_0_OR_GREATER
             return RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
                 Environment.OSVersion.Version > new Version(6, 2);
 #else
@@ -96,15 +96,13 @@ namespace PlatformSpellCheck
                 {
                     langs = factory.SupportedLanguages;
 
-                    string currentLang;
-                    uint fetched;
 
-                    langs.RemoteNext(1, out currentLang, out fetched);
+                    langs.RemoteNext(1, out string currentLang, out uint _);
 
                     while (currentLang != null)
                     {
                         yield return currentLang;
-                        langs.RemoteNext(1, out currentLang, out fetched);
+                        langs.RemoteNext(1, out currentLang, out uint _);
                     }
                 }
                 finally
@@ -159,15 +157,12 @@ namespace PlatformSpellCheck
 
             try
             {
-                string currentSuggestion;
-                uint fetched;
-
-                suggestions.RemoteNext(1, out currentSuggestion, out fetched);
+                suggestions.RemoteNext(1, out string currentSuggestion, out uint _);
 
                 while (currentSuggestion != null)
                 {
                     yield return currentSuggestion;
-                    suggestions.RemoteNext(1, out currentSuggestion, out fetched);
+                    suggestions.RemoteNext(1, out currentSuggestion, out uint _);
                 }
             }
             finally
@@ -243,7 +238,7 @@ namespace PlatformSpellCheck
         /// </summary>
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -252,7 +247,7 @@ namespace PlatformSpellCheck
         /// </summary>
         ~SpellChecker()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         private void Dispose(bool disposing)

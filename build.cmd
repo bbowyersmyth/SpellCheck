@@ -1,3 +1,3 @@
 md builds
 md builds\local
-dotnet pack src\SpellCheck.sln --output builds\local -c release
+dotnet pack SpellCheck.slnx --output builds\local -c release

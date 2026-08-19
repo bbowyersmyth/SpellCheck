@@ -2,21 +2,28 @@
   <PropertyGroup>
     <RootNamespace>PlatformSpellCheck</RootNamespace>
     <AssemblyName>PlatformSpellCheck</AssemblyName>
-    <TargetFrameworks>net4;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net461;net8.0</TargetFrameworks>
     <PackageId>PlatformSpellCheck</PackageId>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>bbowyersmyth</Authors>
     <Owners>bbowyersmyth</Owners>
     <Company />
     <Product>SpellCheck</Product>
     <Description>Managed wrapper for the Microsoft Spell Checking API</Description>
     <Copyright>Copyright © Bruce Bowyer-Smyth</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/bbowyersmyth/SpellCheck/master/License.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>http://github.com/bbowyersmyth/spellcheck</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
     <PackageTags>spell checker check spell-check spell-checker spellchecker spellcheck suggestion</PackageTags>
     <FileVersion>1.0.0.0</FileVersion>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+	<AssemblyAttribute Include="System.Runtime.InteropServices.ComVisible">
+	  <_Parameter1>false</_Parameter1>
+      <_Parameter1_IsLiteral>true</_Parameter1_IsLiteral>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
