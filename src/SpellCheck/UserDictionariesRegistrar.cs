@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace PlatformSpellCheck
 {
@@ -46,7 +43,7 @@ namespace PlatformSpellCheck
         /// </summary>
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -55,7 +52,7 @@ namespace PlatformSpellCheck
         /// </summary>
         ~UserDictionariesRegistrar()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         private void Dispose(bool disposing)

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/SpellCheck.Tests/SpellCheck.Tests.csproj" />
+  <Project Path="src/SpellCheck/SpellCheck.csproj" />
+</Solution>

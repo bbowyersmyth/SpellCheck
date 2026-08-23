@@ -23,7 +23,7 @@ namespace PlatformSpellCheck.Tests
         [TestMethod]
         public void SupportedLanguagesTest()
         {
-            Assert.IsTrue(SpellChecker.SupportedLanguages.Any());
+            Assert.IsNotEmpty(SpellChecker.SupportedLanguages);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace PlatformSpellCheck.Tests
 
             var examples = spell.Suggestions("manle");
 
-            Assert.IsTrue(examples.Any());
+            Assert.IsNotEmpty(examples);
         }
 
         [TestMethod]
@@ -41,23 +41,23 @@ namespace PlatformSpellCheck.Tests
         {
             var spell = new SpellChecker("en-us");
 
-            var examples = spell.Check("foxx or recieve").ToList();
+            var examples = spell.Check("foxx or teh").ToList();
 
-            Assert.AreEqual(examples.Count(), 2);
+            Assert.HasCount(2, examples);
 
             var firstError = examples[0];
 
-            Assert.AreEqual(firstError.StartIndex, 0);
-            Assert.AreEqual(firstError.Length, 4);
-            Assert.AreEqual(firstError.RecommendedAction, RecommendedAction.GetSuggestions);
-            Assert.AreEqual(firstError.RecommendedReplacement, string.Empty);
+            Assert.AreEqual(0, firstError.StartIndex);
+            Assert.AreEqual(4, firstError.Length);
+            Assert.AreEqual(RecommendedAction.GetSuggestions, firstError.RecommendedAction);
+            Assert.AreEqual(string.Empty, firstError.RecommendedReplacement);
 
             var secondError = examples[1];
 
-            Assert.AreEqual(secondError.StartIndex, 8);
-            Assert.AreEqual(secondError.Length, 7);
-            Assert.AreEqual(secondError.RecommendedAction, RecommendedAction.Replace);
-            Assert.AreEqual(secondError.RecommendedReplacement, "receive");
+            Assert.AreEqual(8, secondError.StartIndex);
+            Assert.AreEqual(3, secondError.Length);
+            Assert.AreEqual(RecommendedAction.Replace, secondError.RecommendedAction);
+            Assert.AreEqual("the", secondError.RecommendedReplacement);
         }
 
         [TestMethod]
@@ -70,14 +70,14 @@ namespace PlatformSpellCheck.Tests
             spell1.Dispose();
             var examples2 = spell2.Suggestions("doog").ToList();
 
-            Assert.AreEqual(examples1.Count(), 4);
-            Assert.AreEqual(examples2.Count(), 2);
+            Assert.HasCount(4, examples1);
+            Assert.HasCount(2, examples2);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        [TestMethod]
         public void UnsupportedLangTest()
         {
-            var spell = new SpellChecker("zz-zz");
+            Assert.ThrowsExactly<ArgumentException>(() => new SpellChecker("zz-zz"));
         }
 
         [TestMethod]
@@ -87,13 +87,13 @@ namespace PlatformSpellCheck.Tests
 
             var examples = spell.Check("codez");
 
-            Assert.IsTrue(examples.Any());
+            Assert.IsNotEmpty(examples);
 
             spell.Ignore("codez");
 
             examples = spell.Check("codez");
 
-            Assert.AreEqual(examples.Count(), 0);
+            Assert.IsEmpty(examples);
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace PlatformSpellCheck.Tests
         {
             var spell = new SpellChecker("en-AU");
 
-            Assert.AreEqual(spell.LanguageTag, "en-AU");
+            Assert.AreEqual("en-AU", spell.LanguageTag);
         }
 
         [TestMethod]
